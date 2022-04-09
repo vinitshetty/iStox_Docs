@@ -6,7 +6,7 @@ Why iStox?
 - No need to pay for server costs or development costs.
 - Just configure your rules and system will take care of your trades.
 
-Algo Feature Bucket List
+Automation Platform Features
 =======================================
 
 Instruments and Segments
