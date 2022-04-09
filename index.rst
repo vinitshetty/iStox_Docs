@@ -1,16 +1,6 @@
 Welcome to iStox.net Documentation!
 =======================================
 
-Contents
---------
-
-.. toctree::
-   :maxdepth: 0
-   :glob:
-
-   index
-   OptionBasics
-
 Why iStox?
 =======================================
 
