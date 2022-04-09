@@ -91,6 +91,52 @@ Expiry (Intrady only on Expiry day)
 - Assume spot at 17689, Sell 17700CE and 17700PE, if premium are 100 each, then SL would be 170
 - If both SLL hit, strategy is closed. If not capture 
 
+Intra Day time based strategies 
+---------------------------
+- Selling ATM call and put options with same SP
+- keep SLL wrt sold avg price & exit at a particular time of the day
+- SLL may be in % or point based
+- Ex: if Bnf spot is 34451 at 11.10am then ATM strike is 34500
+- Sell 34500ce and 34500pe at 11.10am with SLL of 32% for each strike
+- How to keep SLL(Stop Loss Limit) order-
+  - Suppose 34500CE & PE have premium of  RS 100 each
+  - Then SLL would be 132 for each leg, if strike premium moves and hits 132, that leg order is closed
+  - In point based: If 40 points stop loss, then exit at 140 on each leg
+  - If SLL order is triggered, then that that particular order is closed.
+  - If both leg SLL orders triggered then we are out of the strategy.
+  - Then next entry will be next day only
+  
+Candle based strategies 
+---------------------------
+- In this strategy take entries based on colour, strength, close price or open price etc of the candles
+- Ex:  If there are 2 consecutive same colour candles occur for the 1st time in the day within 11.45am
+  - Enter ATM straddles with % based SLL and close position by 3.05pm or 3.10pm
+- Ex1: 2 red color candles (30min TF) occur at 10.45 and 1115then place ATM straddle
+  - Before 1045 we donot have 2 same consecutive color candles 
+- Another strategy ORB based ie Open Range Breakout
+  - Ex2: Apply ORB indicator in trading view in 30 min TF
+    -If any candle closes above or below ORB line , sell/buy ATM strike of that candle closing
+    -If suppose 1st candle(0915 to 0945) H-35000 & L 34900
+    -Then next candle closes at 35087, then buy 35100CE or sell 35100PE
+    
+Fixed profit MTM strategies
+---------------------------
+- Enter straddles/strangle with % or point based SLL 
+- If we see certain profit (ex:2000INR) exit the trade or carry trade till 3.10pm
+
+STBT Strategies 
+---------------------------
+- Enter straddle/strangles wrt time 
+- Keep % based SLL on sold avg price 
+- Exit will be either SL hit or time based exit
+
+Positional Strategies 
+---------------------------
+- Take positions wrt time straddles/Strangles
+- Keep % based SLL on sold avg price
+- Entry day : (exp-2 or exp-3 or exp-4) based on the backtest done by the user
+- Exit either SL or on EXP day
+
 Bull call spread
 ---------------------------
 - Amongst all the spread strategies, the bull call spread is one the most popular one.
@@ -120,53 +166,7 @@ Short on Butterfly
 Calender spreads 
 ---------------------------
 
-Intra Day time based strategies 
-============================================
-- Selling ATM call and put options with same SP
-- keep SLL wrt sold avg price & exit at a particular time of the day
-- SLL may be in % or point based
-- Ex: if Bnf spot is 34451 at 11.10am then ATM strike is 34500
-- Sell 34500ce and 34500pe at 11.10am with SLL of 32% for each strike
-- How to keep SLL(Stop Loss Limit) order-
-  - Suppose 34500CE & PE have premium of  RS 100 each
-  - Then SLL would be 132 for each leg, if strike premium moves and hits 132, that leg order is closed
-  - In point based: If 40 points stop loss, then exit at 140 on each leg
-  - If SLL order is triggered, then that that particular order is closed.
-  - If both leg SLL orders triggered then we are out of the strategy.
-  - Then next entry will be next day only
-  
-Candle based strategies 
-============================================
-- In this strategy take entries based on colour, strength, close price or open price etc of the candles
-- Ex:  If there are 2 consecutive same colour candles occur for the 1st time in the day within 11.45am
-  - Enter ATM straddles with % based SLL and close position by 3.05pm or 3.10pm
-- Ex1: 2 red color candles (30min TF) occur at 10.45 and 1115then place ATM straddle
-  - Before 1045 we donot have 2 same consecutive color candles 
-- Another strategy ORB based ie Open Range Breakout
-  - Ex2: Apply ORB indicator in trading view in 30 min TF
-    -If any candle closes above or below ORB line , sell/buy ATM strike of that candle closing
-    -If suppose 1st candle(0915 to 0945) H-35000 & L 34900
-    -Then next candle closes at 35087, then buy 35100CE or sell 35100PE
-    
-Fixed profit MTM strategies
-===================================
-- Enter straddles/strangle with % or point based SLL 
-- If we see certain profit (ex:2000INR) exit the trade or carry trade till 3.10pm
-
-STBT Strategies 
-===================================
-- Enter straddle/strangles wrt time 
-- Keep % based SLL on sold avg price 
-- Exit will be either SL hit or time based exit
-
-Positional Strategies 
-===================================
-- Take positions wrt time straddles/Strangles
-- Keep % based SLL on sold avg price
-- Entry day : (exp-2 or exp-3 or exp-4) based on the backtest done by the user
-- Exit either SL or on EXP day
-
 For More Information
-======================
+---------------------------
 - Commonly used jargons(https://zerodha.com/varsity/chapter/commonly-used-jargons/)
 - Options Basic (https://zerodha.com/varsity/module/option-theory/)
